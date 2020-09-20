@@ -1,14 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import autoComplete from '../API/autoComplete';
+import { changeStatus } from '../actions';
+import {
+  RESULTS_READY,
+  LOADING,
+  ERROR,
+} from '../constants';
 
-const Query = () => {
+const mapDispatchToProps = dispatch => ({
+  statusChange: status => dispatch(changeStatus(status)),
+});
+
+const Query = props => {
+  const { statusChange } = props;
+
   let timeOut;
   const handleInput = event => {
+    statusChange(LOADING)
     const val = event.target.value;
     const callThis = () => {
       autoComplete(val)
         .then(
-          response => console.log(response),
+          response => {
+            statusChange(RESULTS_READY);
+            console.log(response);
+          },
         );
     };
 
@@ -23,4 +40,7 @@ const Query = () => {
   );
 };
 
-export default Query;
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Query);
