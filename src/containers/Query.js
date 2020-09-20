@@ -1,20 +1,25 @@
 import React from 'react';
+import autoComplete from '../API/autoComplete';
 
 const Query = () => {
   let timeOut;
   const handleInput = event => {
     const val = event.target.value;
     const callThis = () => {
-      console.log(val);
-    }
+      autoComplete(val)
+        .then(
+          response => console.log(response),
+        );
+    };
+
     clearTimeout(timeOut);
     timeOut = setTimeout(() => {
       callThis();
-    }, 500);
+    }, 700);
   };
 
   return (
-    <input onChange={(event) => {handleInput(event)}} />
+    <input onChange={handleInput} />
   );
 };
 

@@ -10,10 +10,8 @@ const autoComplete = (queryWord = 'Dostoyevski') => {
       response => response.json(),
     )
     .then(
-      response => console.log(response),
+      response => response,
     );
 };
-
-autoComplete();
 
 export default autoComplete;
