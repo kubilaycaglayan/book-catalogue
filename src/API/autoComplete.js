@@ -1,6 +1,6 @@
 import { BASE_URL } from '../constants';
 
-const autoComplete = (queryWord = 'Peyami') => {
+const autoComplete = (queryWord = 'Dostoyevski') => {
   const endpoint = `${BASE_URL}book/auto_complete?format=json&q=${queryWord}`;
 
   return fetch(endpoint, {
@@ -10,8 +10,10 @@ const autoComplete = (queryWord = 'Peyami') => {
       response => response.json(),
     )
     .then(
-      response => response,
+      response => console.log(response),
     );
 };
+
+autoComplete();
 
 export default autoComplete;
