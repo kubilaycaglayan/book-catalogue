@@ -2,7 +2,7 @@ import { parseString } from 'xml2js';
 import { BASE_URL, GOODREADS_API_KEY } from '../constants';
 
 const authorName = 'Dostoyevski';
-const endpoint = new URL(`${BASE_URL}/author_url/${authorName}?key=${GOODREADS_API_KEY}`);
+const endpoint = new URL(`${BASE_URL}/api/author_url/${authorName}?key=${GOODREADS_API_KEY}`);
 
 fetch(endpoint, {
   mode: 'cors',
@@ -12,8 +12,6 @@ fetch(endpoint, {
   )
   .then(
     response => {
-      parseString(response, (err, res) => {
-        // do something with res
-      });
+      parseString(response, (err, res) => ({ err, res }));
     },
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './API';
+import './API/autoComplete';
 
 ReactDOM.render(
   <h1>Hello React!</h1>,
