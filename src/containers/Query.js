@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import autoComplete from '../API/autoComplete';
-import { changeStatus } from '../actions';
+import { changeStatus, recordResults } from '../actions';
 import {
   RESULTS_READY,
   LOADING,
@@ -10,21 +10,45 @@ import {
 
 const mapDispatchToProps = dispatch => ({
   statusChange: status => dispatch(changeStatus(status)),
+  resultRecorder: results => dispatch(recordResults(results)),
 });
 
 const Query = props => {
-  const { statusChange } = props;
+  const { statusChange, resultRecorder } = props;
+
+  const authors = response => {
+    return response.map(bookObj => ({
+      name: bookObj.author.name,
+      id: bookObj.author.id,
+    }));
+  };
+
+  const books = response => {
+    return response.map(bookObj => ({
+      title: bookObj.title,
+      author: bookObj.author.name,
+      id: bookObj.bookId,
+    }));
+  };
 
   let timeOut;
   const handleInput = event => {
-    statusChange(LOADING)
+    if (timeOut === undefined) {
+      statusChange(LOADING);
+    }
+
     const val = event.target.value;
+
     const callThis = () => {
       autoComplete(val)
         .then(
           response => {
-            statusChange(RESULTS_READY);
             console.log(response);
+            resultRecorder({
+              authors: authors(response),
+              books: books(response),
+            });
+            statusChange(RESULTS_READY);
           },
         );
     };

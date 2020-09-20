@@ -1,9 +1,9 @@
 import { SHOW_RESULTS } from '../constants';
 
-const showResults = results => ({
+const recordResults = results => ({
   type: SHOW_RESULTS,
   books: results.books,
   authors: results.authors,
 });
 
-export default showResults;
+export default recordResults;

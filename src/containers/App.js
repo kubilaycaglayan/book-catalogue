@@ -14,10 +14,12 @@ import {
 
 const mapStateToProps = state => ({
   status: state.status,
+  books: state.results.books,
+  authors: state.results.authors,
 });
 
 const App = props => {
-  const { status } = props;
+  const { status, books, authors } = props;
   console.log(status);
 
   const whichComponent = () => {
@@ -29,7 +31,7 @@ const App = props => {
       case LOADING:
         return <Loading />;
       case RESULTS_READY:
-        return <Results />;
+        return <Results books={books} authors={authors} />;
       default:
         return <Welcome />;
     }
