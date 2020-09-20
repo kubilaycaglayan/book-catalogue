@@ -1,6 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Book Catalogue
+
+> Description of the project:  "Catalogue of Statistics"
 
 > One paragraph statement about the project.
 
