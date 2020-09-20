@@ -17,19 +17,24 @@ const Query = props => {
   const { statusChange, resultRecorder } = props;
 
   const authors = response => {
-    return response.map(bookObj => ({
-      name: bookObj.author.name,
-      id: bookObj.author.id,
-    }));
+    const ids = [];
+    const result = [];
+    response.forEach(bookObj => {
+      if (ids.includes(bookObj.author.id)) return;
+      ids.push(bookObj.author.id);
+      result.push({
+        name: bookObj.author.name,
+        id: bookObj.author.id,
+      });
+    });
+    return result;
   };
 
-  const books = response => {
-    return response.map(bookObj => ({
-      title: bookObj.title,
-      author: bookObj.author.name,
-      id: bookObj.bookId,
-    }));
-  };
+  const books = response => response.map(bookObj => ({
+    title: bookObj.title,
+    author: bookObj.author.name,
+    id: bookObj.bookId,
+  }));
 
   let timeOut;
   const handleInput = event => {
