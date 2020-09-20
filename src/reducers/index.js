@@ -7,8 +7,6 @@ import author from './author';
 const reducer = combineReducers({
   status,
   results,
-  // book,
-  // author,
 });
 
 export default reducer;
