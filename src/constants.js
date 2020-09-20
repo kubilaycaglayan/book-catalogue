@@ -18,3 +18,5 @@ export const initialState = {
 
 export const CHANGE_STATUS = 'CHANGE_STATUS';
 export const SHOW_RESULTS = 'SHOW_RESULTS';
+export const RECORD_BOOK = 'RECORD_BOOK';
+export const RECORD_AUTHOR = 'RECORD_AUTHOR';

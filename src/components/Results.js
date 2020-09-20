@@ -1,7 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import getAuthor from '../API/getAuthor';
+import { recordAuthor } from '../actions';
+
+const mapDispatchToProps = dispatch => ({
+  authorRecorder: book => dispatch(recordAuthor(book));
+});
 
 const Results = props => {
-  const { books, authors } = props;
+  const { books, authors, authorRecorder } = props;
+
+  const handleAuthor = authorId => {
+    getAuthor(authorId)
+      .then(
+        response => {
+
+        }
+      )
+  };
 
   return (
     <>
@@ -17,11 +33,14 @@ const Results = props => {
       {authors.map(author => (
         <div key={author.id}>
           {author.name}
-          <button type="button">More</button>
+          <button onClick={() => {handleAuthor(author.id)}} type="button">More</button>
         </div>
       ))}
     </>
   );
 };
 
-export default Results;
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Results);
