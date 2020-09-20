@@ -3,6 +3,8 @@ export const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://www.goodrea
 
 export const WELCOME = 'WELCOME';
 export const RESULTS_READY = 'RESULTS_READY';
+export const BOOK_READY = 'BOOK_READY';
+export const AUTHOR_READY = 'AUTHOR_READY';
 export const LOADING = 'LOADING';
 export const ERROR = 'ERROR';
 

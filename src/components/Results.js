@@ -1,22 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import getAuthor from '../API/getAuthor';
-import { recordAuthor } from '../actions';
+import getBook from '../API/getBook';
+import { recordAuthor, changeStatus, recordBook } from '../actions';
+import { AUTHOR_READY, BOOK_READY, LOADING } from '../constants';
 
 const mapDispatchToProps = dispatch => ({
-  authorRecorder: book => dispatch(recordAuthor(book));
+  authorRecorder: author => dispatch(recordAuthor(author)),
+  bookRecorder: book => dispatch(recordBook(book)),
+  statusChanger: status => dispatch(changeStatus(status)),
 });
 
 const Results = props => {
-  const { books, authors, authorRecorder } = props;
+  const { books, authors, authorRecorder, statusChanger, bookRecorder } = props;
 
   const handleAuthor = authorId => {
+    statusChanger(LOADING);
     getAuthor(authorId)
       .then(
         response => {
+          console.log(response);
+          authorRecorder(response);
+          statusChanger(AUTHOR_READY);
+        },
+      );
+  };
 
-        }
-      )
+  const handleBook = bookId => {
+    statusChanger(LOADING);
+    getBook(bookId)
+      .then(
+        response => {
+          console.log(response);
+          bookRecorder(response);
+          statusChanger(BOOK_READY);
+        },
+      );
   };
 
   return (
@@ -26,7 +45,7 @@ const Results = props => {
       {books.map(book => (
         <div key={book.id}>
           {book.title}
-          <button type="button">More</button>
+          <button onClick={() => {handleBook(book.id)}} type="button">More</button>
         </div>
       ))}
       <h4>Authors</h4>

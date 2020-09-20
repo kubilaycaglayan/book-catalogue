@@ -1,8 +1,8 @@
 import { parseString } from 'xml2js';
 import { BASE_URL, GOODREADS_API_KEY } from '../constants';
 
-const getAuthor = (authorId = '18541') => {
-  const endpoint = `${BASE_URL}author/show/${authorId}?format=xml&key=${GOODREADS_API_KEY}`;
+const getBook = (bookId = '2788041') => {
+  const endpoint = `${BASE_URL}book/show/${bookId}.xml?key=${GOODREADS_API_KEY}`;
 
   return fetch(endpoint, {
     mode: 'cors',
@@ -14,11 +14,12 @@ const getAuthor = (authorId = '18541') => {
       response => {
         let result;
         parseString(response, (err, res) => {
-          [result] = res.GoodreadsResponse.author;
+          [result] = res.GoodreadsResponse.book;
         });
+        console.log(result);
         return result;
       },
     );
 };
 
-export default getAuthor;
+export default getBook;

@@ -6,9 +6,9 @@ import thunk from 'redux-thunk';
 import reducer from './reducers/index';
 import App from './containers/App';
 import { initialState } from './constants';
-import getAuthor from './API/getAuthor';
+import getBook from './API/getBook';
 
-getAuthor();
+getBook();
 const store = createStore(reducer, initialState, applyMiddleware(thunk));
 
 ReactDOM.render(
