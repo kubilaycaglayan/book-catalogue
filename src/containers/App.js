@@ -1,8 +1,12 @@
 import React from 'react';
 import Query from './Query';
+import Results from './Results';
 
 const App = () => (
-  <Query />
+  <>
+    <Query />
+    <Results />
+  </>
 );
 
 export default App;
