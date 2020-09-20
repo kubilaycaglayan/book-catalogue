@@ -10,3 +10,6 @@ export const initialState = {
   book: {},
   author: {},
 };
+
+export const CHANGE_STATUS = 'CHANGE_STATUS';
+export const SHOW_RESULTS = 'SHOW_RESULTS';
