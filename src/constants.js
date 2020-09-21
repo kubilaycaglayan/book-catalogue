@@ -18,7 +18,9 @@ export const initialState = {
     title: [''],
     id: 0,
   },
-  author: {},
+  author: {
+    id: 0,
+  },
 };
 
 export const CHANGE_STATUS = 'CHANGE_STATUS';

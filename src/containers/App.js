@@ -55,6 +55,7 @@ const App = props => {
         {whichComponent()}
       </Route>
       <Route exact path="/book/:bookId" component={Book} />
+      <Route exact path="/author/:authorId" component={Author} />
     </Router>
   );
 };
