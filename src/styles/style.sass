@@ -10,13 +10,51 @@ $white: #dbf2ff
   font-family: 'Lato', sans-serif
   font-size: 13px
 
+@mixin flex-it($justify-content, $align-items)
+  align-items: $align-items
+  display: flex
+  justify-content: $justify-content
 
-*
-  background-color: $blue
-  box-sizing: border-box
-  color: $white
-  font-family: 'Duru Sans', sans-serif
-  font-size: 20px
-  margin: 0
-  padding: 0
 
+html
+  *
+    background-color: $blue
+    box-sizing: border-box
+    color: $white
+    font-family: 'Duru Sans', sans-serif
+    font-size: 20px
+    margin: 0
+    padding: 0
+
+
+body
+  +flex-it(space-around, center)
+  flex-direction: column
+  margin: 0 auto
+
+  .welcome-page
+    +flex-it(space-around, center)
+    flex-direction: column
+    height: 100vh
+
+    h1
+      +flex-it(space-around, center)
+      flex-direction: column
+      font-size: 35px
+      text-align: center
+      text-transform: capitalize
+
+    .main-page-link
+      +flex-it(space-around, center)
+      color: $white
+      flex-direction: column
+
+      &:hover
+        text-decoration: none
+        transform: scale(1.1)
+        transition: transform 1s
+
+    i
+      bottom: 50px
+      position: relative
+      transform: scale(4)
