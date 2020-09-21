@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getBook } from '../API';
@@ -25,7 +25,7 @@ const Book = props => {
 
   const similarBooks = book.similar_books;
 
-  const startProcess = () => {
+  useEffect(() => {
     if (id.toString() === bookId.toString()) return;
     getBook(bookId)
       .then(
@@ -33,9 +33,7 @@ const Book = props => {
           bookRecorder(newBook);
         },
       );
-  };
-
-  startProcess();
+  }, [bookId]);
 
   return (
     <div key={id}>

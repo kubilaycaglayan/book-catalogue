@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getAuthor } from '../API';
 import Loading from '../components/Loading';
-import { recordAuthor } from '../actions';
+import { recordAuthor, changeStatus } from '../actions';
+import { LOADING, RESULTS_READY } from '../constants';
 
 const mapStateToProps = state => ({
   author: state.author,
+  status: state.status,
 });
 
 const mapDispatchToProps = dispatch => ({
   authorRecorder: author => dispatch(recordAuthor(author)),
+  statusChanger: status => dispatch(changeStatus(status)),
 });
 
 const Author = props => {
-  const { author, match, authorRecorder } = props;
+  const { author, match, authorRecorder, statusChanger, status } = props;
   const { authorId } = match.params;
   const {
     name,
@@ -25,17 +28,17 @@ const Author = props => {
   const bornAt = author.born_at;
   const diedAt = author.died_at;
 
-  const startProcess = () => {
+  useEffect(() => {
     if (author.id.toString() === authorId.toString()) return;
+    statusChanger(LOADING);
     getAuthor(authorId)
       .then(
         newAuthor => {
           authorRecorder(newAuthor);
+          statusChanger(RESULTS_READY);
         },
       );
-  };
-
-  startProcess();
+  }, [authorId]);
 
   return (
     <div>
