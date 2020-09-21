@@ -6,9 +6,7 @@ $ligh-blue: #88a7e2
 $white: #dbf2ff
 
 =text-style-1
-  color: $black-three
   font-family: 'Lato', sans-serif
-  font-size: 13px
 
 @mixin flex-it($justify-content, $align-items)
   align-items: $align-items
@@ -58,3 +56,34 @@ body
       bottom: 50px
       position: relative
       transform: scale(4)
+
+.query-page
+  +flex-it(space-around, center)
+  color: $white
+  flex-direction: column
+  height: 80vh
+  padding-top: 5%
+
+  i
+    transform: scale(3)
+
+  .query
+    input
+      +text-style-1
+      background-color: $white
+      border: 0
+      border-radius: 15px
+      color: $dark-blue
+      font-size: 20px
+      font-weight: bold
+      height: 35px
+      outline: none
+      text-align: center
+
+  h1
+    padding: 10px
+    text-align: center
+
+  .symbols
+    +flex-it(space-around, center)
+    width: 300px

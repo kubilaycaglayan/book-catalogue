@@ -66,7 +66,7 @@ const Query = props => {
   };
 
   return (
-    <div>
+    <div className="query">
       <input onChange={handleInput} />
       {RedirectIf()}
     </div>
