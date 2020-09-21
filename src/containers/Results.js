@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -55,8 +55,8 @@ const Results = props => {
     authorId: bookObj.author.id,
   }));
 
-  const callThis = () => {
-    if (status === RESULTS_READY) return;
+  useEffect(() => {
+    if (status === RESULTS_READY || query === '') return;
     autoComplete(query)
       .then(
         response => {
@@ -67,9 +67,7 @@ const Results = props => {
           statusChange(RESULTS_READY);
         },
       );
-  };
-
-  callThis();
+  }, [query]);
 
   return (
     <>

@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { changeStatus, changeQuery } from '../actions';
+import {
+  changeStatus, changeQuery, changeFilter, recordResults,
+} from '../actions';
 import { LOADING } from '../constants';
 
 const mapStateToProps = state => ({
@@ -13,6 +15,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   statusChanger: status => dispatch(changeStatus(status)),
   queryChanger: query => dispatch(changeQuery(query)),
+  resetFilter: () => dispatch(changeFilter(0)),
+  resetResults: () => dispatch(recordResults({
+    books: [],
+    authors: [],
+  })),
 });
 
 const Query = props => {
@@ -21,15 +28,22 @@ const Query = props => {
     status,
     query,
     queryChanger,
+    resetFilter,
+    resetResults,
   } = props;
 
   let timeOut;
   const handleInput = event => {
     const val = event.target.value;
 
+    if (status !== LOADING) {
+      resetResults();
+    }
+
     const callThis = () => {
-      queryChanger(val);
       statusChanger(LOADING);
+      resetFilter();
+      queryChanger(val);
     };
 
     clearTimeout(timeOut);
@@ -38,20 +52,23 @@ const Query = props => {
     }, 700);
   };
 
+  // eslint-disable-next-line consistent-return
+  const RedirectIf = () => {
+    if (status === LOADING) {
+      return (
+        <Redirect to={{
+          pathname: '/results',
+          search: `?q=${query}`,
+        }}
+        />
+      );
+    }
+  };
+
   return (
     <>
       <input onChange={handleInput} />
-      {
-        status === LOADING
-          ? (
-            <Redirect to={{
-              pathname: '/results',
-              search: `?q=${query}`,
-            }}
-            />
-          )
-          : ''
-      }
+      {RedirectIf()}
     </>
   );
 };
@@ -61,6 +78,8 @@ Query.propTypes = {
   status: PropTypes.string.isRequired,
   query: PropTypes.string.isRequired,
   queryChanger: PropTypes.func.isRequired,
+  resetFilter: PropTypes.func.isRequired,
+  resetResults: PropTypes.func.isRequired,
 };
 
 export default connect(
