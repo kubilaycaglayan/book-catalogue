@@ -10,7 +10,6 @@ import LinkMain from './partials/linkMain';
 
 const App = () => (
   <Router>
-    <Route path="/(results|author|book)" component={LinkMain} />
     <Route exact path="/" component={Welcome} />
     <Route exact path="/query" component={QueryPage} />
     <Route exact path="/error" component={Error} />
