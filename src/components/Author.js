@@ -28,6 +28,7 @@ const Author = props => {
     getAuthor(authorId)
       .then(
         newAuthor => {
+          console.log(newAuthor);
           authorRecorder(newAuthor);
         },
       );

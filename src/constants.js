@@ -21,9 +21,11 @@ export const initialState = {
   author: {
     id: 0,
   },
+  query: '',
 };
 
 export const CHANGE_STATUS = 'CHANGE_STATUS';
+export const CHANGE_QUERY = 'CHANGE_QUERY';
 export const SHOW_RESULTS = 'SHOW_RESULTS';
 export const RECORD_BOOK = 'RECORD_BOOK';
 export const RECORD_AUTHOR = 'RECORD_AUTHOR';
