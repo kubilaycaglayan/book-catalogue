@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { changeStatus, changeQuery } from '../actions';
 import { LOADING } from '../constants';
 
@@ -10,12 +11,17 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  statusChange: status => dispatch(changeStatus(status)),
+  statusChanger: status => dispatch(changeStatus(status)),
   queryChanger: query => dispatch(changeQuery(query)),
 });
 
 const Query = props => {
-  const { statusChange, status, query, queryChanger } = props;
+  const {
+    statusChanger,
+    status,
+    query,
+    queryChanger,
+  } = props;
 
   let timeOut;
   const handleInput = event => {
@@ -23,7 +29,7 @@ const Query = props => {
 
     const callThis = () => {
       queryChanger(val);
-      statusChange(LOADING);
+      statusChanger(LOADING);
     };
 
     clearTimeout(timeOut);
@@ -48,6 +54,13 @@ const Query = props => {
       }
     </>
   );
+};
+
+Query.propTypes = {
+  statusChanger: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
+  query: PropTypes.string.isRequired,
+  queryChanger: PropTypes.func.isRequired,
 };
 
 export default connect(

@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { autoComplete } from '../API';
 import { changeStatus, recordResults, changeFilter } from '../actions';
 import { RESULTS_READY } from '../constants';
-import Loading from './Loading';
-import Filter from './Filter';
+import Loading from '../components/Loading';
+import Filter from '../components/Filter';
 
 const mapStateToProps = state => ({
   status: state.status,

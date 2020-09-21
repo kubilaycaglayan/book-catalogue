@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getAuthor } from '../API';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 import { recordAuthor } from '../actions';
 
 const mapStateToProps = state => ({

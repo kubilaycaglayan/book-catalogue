@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getBook } from '../API';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 import { recordBook } from '../actions';
 
 const mapStateToProps = state => ({
