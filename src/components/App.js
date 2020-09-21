@@ -6,7 +6,6 @@ import Welcome from './Welcome';
 import QueryPage from './QueryPage';
 import Book from '../containers/Book';
 import Author from '../containers/Author';
-import LinkMain from './partials/linkMain';
 
 const App = () => (
   <Router>
