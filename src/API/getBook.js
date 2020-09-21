@@ -16,7 +16,6 @@ const getBook = (bookId = '2788041') => {
         parseString(response, (err, res) => {
           [result] = res.GoodreadsResponse.book;
         });
-        console.log(result);
         return result;
       },
     );

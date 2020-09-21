@@ -4,6 +4,7 @@ import results from './results';
 import book from './book';
 import author from './author';
 import query from './query';
+import filter from './filter';
 
 const reducer = combineReducers({
   status,
@@ -11,6 +12,7 @@ const reducer = combineReducers({
   author,
   book,
   query,
+  filter,
 });
 
 export default reducer;

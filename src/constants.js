@@ -22,9 +22,11 @@ export const initialState = {
     id: 0,
   },
   query: '',
+  filter: '0',
 };
 
 export const CHANGE_STATUS = 'CHANGE_STATUS';
+export const CHANGE_FILTER = 'CHANGE_FILTER';
 export const CHANGE_QUERY = 'CHANGE_QUERY';
 export const SHOW_RESULTS = 'SHOW_RESULTS';
 export const RECORD_BOOK = 'RECORD_BOOK';
