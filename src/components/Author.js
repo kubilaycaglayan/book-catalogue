@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import getAuthor from '../API/getAuthor';
+import { getAuthor } from '../API';
 import Loading from './Loading';
 import { recordAuthor } from '../actions';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import getBook from '../API/getBook';
+import { getBook } from '../API';
 import Loading from './Loading';
 import { recordBook } from '../actions';
 

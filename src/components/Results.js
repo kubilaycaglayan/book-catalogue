@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import autoComplete from '../API/autoComplete';
+import { autoComplete } from '../API';
 import { changeStatus, recordResults, changeFilter } from '../actions';
 import { RESULTS_READY } from '../constants';
 import Loading from './Loading';

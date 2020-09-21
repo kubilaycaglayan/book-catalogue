@@ -1,15 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import Loading from '../components/Loading';
-import autoComplete from '../API/autoComplete';
 import { changeStatus, changeQuery } from '../actions';
-import {
-  RESULTS_READY,
-  LOADING,
-  ERROR,
-
-} from '../constants';
+import { LOADING } from '../constants';
 
 const mapStateToProps = state => ({
   status: state.status,
