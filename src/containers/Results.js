@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { autoComplete } from '../API';
 import { changeStatus, recordResults, changeFilter } from '../actions';
 import { RESULTS_READY } from '../constants';
@@ -21,7 +22,16 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const Results = props => {
-  const { status, location, statusChange, resultRecorder, books, authors, handleFilterChange, filter } = props;
+  const {
+    status,
+    location,
+    statusChange,
+    resultRecorder,
+    books,
+    authors,
+    handleFilterChange,
+    filter,
+  } = props;
   const query = location.search.slice(3);
 
   const newAuthors = response => {
@@ -93,6 +103,19 @@ const Results = props => {
       }
     </>
   );
+};
+
+Results.propTypes = {
+  status: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    search: PropTypes.string,
+  }).isRequired,
+  statusChange: PropTypes.func.isRequired,
+  resultRecorder: PropTypes.func.isRequired,
+  handleFilterChange: PropTypes.func.isRequired,
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  authors: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(

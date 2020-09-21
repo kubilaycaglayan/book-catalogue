@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getBook } from '../API';
 import Loading from '../components/Loading';
 import { recordBook } from '../actions';
@@ -19,8 +20,9 @@ const Book = props => {
     title,
     authors,
     publisher,
-    similar_books,
   } = book;
+
+  const similarBooks = book.similar_books;
 
   const startProcess = () => {
     if (book.id.toString() === bookId.toString()) return;
@@ -56,7 +58,7 @@ const Book = props => {
                   <div key={author.id[0]}>
                     {author.name[0]}
                   </div>
-                ) )}
+                ))}
               </div>
               <h4>
                 Publisher
@@ -68,15 +70,38 @@ const Book = props => {
                 Similar Books
               </h4>
               <div>
-                {similar_books[0].book.slice(0, 3).map(book => {
-                  return <div key={book.id}> {book.title} </div>;
-                })}
+                {similarBooks[0].book.slice(0, 3).map(book => (
+                  <div key={book.id}>
+                    {book.title}
+                  </div>
+                ))}
               </div>
             </div>
           )
       }
     </div>
   );
+};
+
+Book.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      bookId: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+  bookRecorder: PropTypes.func.isRequired,
+  book: PropTypes.shape({
+    image_url: PropTypes.string,
+    id: PropTypes.string,
+    title: PropTypes.string,
+    authors: PropTypes.arrayOf(PropTypes.object),
+    publisher: PropTypes.string,
+    similar_books: PropTypes.arrayOf(PropTypes.shape({
+      book: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string,
+      })),
+    })),
+  }).isRequired,
 };
 
 export default connect(

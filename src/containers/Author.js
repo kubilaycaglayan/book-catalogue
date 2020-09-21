@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getAuthor } from '../API';
 import Loading from '../components/Loading';
 import { recordAuthor } from '../actions';
@@ -18,17 +19,17 @@ const Author = props => {
   const {
     name,
     about,
-    born_at,
-    died_at,
     books,
   } = author;
+
+  const bornAt = author.born_at;
+  const diedAt = author.died_at;
 
   const startProcess = () => {
     if (author.id.toString() === authorId.toString()) return;
     getAuthor(authorId)
       .then(
         newAuthor => {
-          console.log(newAuthor);
           authorRecorder(newAuthor);
         },
       );
@@ -53,9 +54,9 @@ const Author = props => {
               </div>
               <div>
                 <h4>Birth</h4>
-                {born_at}
+                {bornAt}
                 <h4>Death</h4>
-                {died_at}
+                {diedAt}
               </div>
               <div>
                 <h4>Books</h4>
@@ -82,6 +83,23 @@ const Author = props => {
       }
     </div>
   );
+};
+
+Author.propTypes = {
+  author: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    about: PropTypes.arrayOf(PropTypes.string),
+    born_at: PropTypes.string,
+    died_at: PropTypes.string,
+    books: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      authorId: PropTypes.string,
+    }),
+  }).isRequired,
+  authorRecorder: PropTypes.func.isRequired,
 };
 
 export default connect(
