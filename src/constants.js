@@ -14,7 +14,10 @@ export const initialState = {
     books: [],
     authors: [],
   },
-  book: {},
+  book: {
+    title: [''],
+    id: 0,
+  },
   author: {},
 };
 

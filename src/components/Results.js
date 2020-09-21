@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import getAuthor from '../API/getAuthor';
 import getBook from '../API/getBook';
 import { recordAuthor, changeStatus, recordBook } from '../actions';
@@ -46,6 +47,7 @@ const Results = props => {
         <div key={book.id}>
           {book.title}
           <button onClick={() => {handleBook(book.id)}} type="button">More</button>
+          <Link to={`/book/${book.id}`}>More</Link>
         </div>
       ))}
       <h4>Authors</h4>
