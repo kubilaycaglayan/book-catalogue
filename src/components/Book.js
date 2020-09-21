@@ -35,7 +35,7 @@ const Book = props => {
   startProcess();
 
   return (
-    <div>
+    <div key={book.id}>
       {
         book.id.toString() !== bookId.toString()
           ? <Loading />
@@ -69,7 +69,7 @@ const Book = props => {
               </h4>
               <div>
                 {similar_books[0].book.slice(0, 3).map(book => {
-                  return <> {book.title} </>;
+                  return <div key={book.id}> {book.title} </div>;
                 })}
               </div>
             </div>
