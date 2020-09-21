@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const LinkMain = () => (
-  <Link to="/">
-    Main Page
-  </Link>
+  <div className="main-page-link">
+    <Link to="/query">
+      Main Page
+    </Link>
+  </div>
 );
 
 export default LinkMain;
