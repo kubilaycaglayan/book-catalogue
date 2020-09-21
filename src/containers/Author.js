@@ -88,10 +88,10 @@ const Author = props => {
 Author.propTypes = {
   author: PropTypes.shape({
     id: PropTypes.number,
-    name: PropTypes.string,
+    name: PropTypes.arrayOf(PropTypes.string),
     about: PropTypes.arrayOf(PropTypes.string),
-    born_at: PropTypes.string,
-    died_at: PropTypes.string,
+    born_at: PropTypes.arrayOf(PropTypes.string),
+    died_at: PropTypes.arrayOf(PropTypes.string),
     books: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
   match: PropTypes.shape({

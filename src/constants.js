@@ -17,6 +17,8 @@ export const initialState = {
   book: {
     title: [''],
     id: 0,
+    authors: [{}],
+    publisher: [''],
   },
   author: {
     id: 0,

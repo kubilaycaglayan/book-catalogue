@@ -17,6 +17,7 @@ const Book = props => {
   const { match, bookRecorder, book } = props;
   const { bookId } = match.params;
   const {
+    id,
     title,
     authors,
     publisher,
@@ -25,7 +26,7 @@ const Book = props => {
   const similarBooks = book.similar_books;
 
   const startProcess = () => {
-    if (book.id.toString() === bookId.toString()) return;
+    if (id.toString() === bookId.toString()) return;
     getBook(bookId)
       .then(
         newBook => {
@@ -37,9 +38,9 @@ const Book = props => {
   startProcess();
 
   return (
-    <div key={book.id}>
+    <div key={id}>
       {
-        book.id.toString() !== bookId.toString()
+        id.toString() !== bookId.toString()
           ? <Loading />
           : (
             <div>
@@ -70,9 +71,9 @@ const Book = props => {
                 Similar Books
               </h4>
               <div>
-                {similarBooks[0].book.slice(0, 3).map(book => (
-                  <div key={book.id}>
-                    {book.title}
+                {similarBooks[0].book.slice(0, 3).map(bookTwo => (
+                  <div key={bookTwo.id}>
+                    {bookTwo.title}
                   </div>
                 ))}
               </div>
@@ -91,16 +92,12 @@ Book.propTypes = {
   }).isRequired,
   bookRecorder: PropTypes.func.isRequired,
   book: PropTypes.shape({
-    image_url: PropTypes.string,
-    id: PropTypes.string,
-    title: PropTypes.string,
+    image_url: PropTypes.arrayOf(PropTypes.string),
+    id: PropTypes.number,
+    title: PropTypes.arrayOf(PropTypes.string),
     authors: PropTypes.arrayOf(PropTypes.object),
-    publisher: PropTypes.string,
-    similar_books: PropTypes.arrayOf(PropTypes.shape({
-      book: PropTypes.arrayOf(PropTypes.shape({
-        title: PropTypes.string,
-      })),
-    })),
+    publisher: PropTypes.arrayOf(PropTypes.string),
+    similar_books: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
 };
 
