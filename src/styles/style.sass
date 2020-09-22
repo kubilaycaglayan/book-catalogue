@@ -4,6 +4,7 @@ $dark-blue: #244588
 $blue: #4369b2
 $ligh-blue: #88a7e2
 $white: #dbf2ff
+$transparent: #ffffff00
 
 =text-style-1
   font-family: 'Lato', sans-serif
@@ -37,6 +38,7 @@ body
   +flex-it(space-around, center)
   flex-direction: column
   margin: 0 auto
+  min-width: 360px
 
   .welcome-page
     +flex-it(space-around, center)
@@ -103,32 +105,49 @@ body
 
   h2
     +text-style-1
+    background-color: $dark-blue
+    font-size: 2rem
     font-weight: bolder
-    margin-bottom: 5%
-    padding: 2%
+    padding: 5%
     text-align: center
 
   p
     padding: 4%
 
-  select
-    +text-style-1
-    background-color: $white
-    border: 0
-    border-radius: 10px
-    color: $dark-blue
-    font-weight: bolder
-    text-align: center
+  .select-box
+    +flex-it(space-between, center)
+    width: 260px
+
+    select
+      +text-style-1
+      background-color: $white
+      border: 0
+      border-radius: 10px
+      color: $dark-blue
+      font-weight: bolder
+      text-align: center
 
   .container-fluid
     padding-top: 3%
 
-    .books
+    *
+      color: $dark-blue
+
+    .results
+      padding: 0
       padding-top: 3%
 
-      .book-card
-        margin-bottom: 8%
+      .result-card
+        background: linear-gradient(0deg, $blue 0%, $white 84%, $white 100%)
+        padding: 5%
 
-    .authors
-      padding-top: 3%
+      i
+        background-color: $transparent
+        font-size: 2rem
 
+      .media-body,
+      .more-link
+        background-color: $transparent
+
+      .more-link
+        text-align: right

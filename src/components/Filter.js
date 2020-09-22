@@ -10,13 +10,16 @@ const Filter = props => {
   };
 
   return (
-    <select onChange={e => { changeFilter(e); }}>
-      {
-        dropDown.map(author => (
-          <option key={author.id} value={author.id}>{author.name}</option>
-        ))
-      }
-    </select>
+    <div className="select-box">
+      <select onChange={e => { changeFilter(e); }}>
+        {
+          dropDown.map(author => (
+            <option key={author.id} value={author.id}>{author.name}</option>
+          ))
+        }
+      </select>
+      <i className="fas fa-filter" />
+    </div>
   );
 };
 
