@@ -128,7 +128,7 @@ body
 
       h2,
       .result-card
-        border-radius: 20px !important
+        border-radius: 20px
 
   h2
     +text-style-1
@@ -153,6 +153,9 @@ body
       color: $dark-blue
       font-weight: bolder
       text-align: center
+
+      &:hover
+        cursor: pointer
 
   .container-fluid
     padding-top: 3%
@@ -193,7 +196,7 @@ body
   a
     +text-style-1
     font-weight: bolder
-    margin-left: 5%
+    margin-left: 10px
 
     &:hover
       color: $white
@@ -208,10 +211,19 @@ body
   padding-bottom: 0%
   padding-top: 5%
 
+  @media ( min-width: $bp-md )
+    margin: 0 auto
+    max-width: 1000px
+
+    .result-card
+      border-radius: 10px
+      margin-bottom: 10px
+
   h1
     +text-style-1
     font-weight: bold
     padding: 50px
+    padding-bottom: 0
     text-align: center
 
   h2

@@ -16,7 +16,7 @@ const App = () => (
     <Route exact path="/results" component={Results} />
     <Route exact path="/book/:bookId" component={Book} />
     <Route exact path="/author/:authorId" component={Author} />
-    <Route exact path="/(results|author|book|error)" component={LinkQuery} />
+    <Route exact path="/(results|author/.*|book/.*|error)" component={LinkQuery} />
   </Router>
 );
 

@@ -41,9 +41,9 @@ const Query = props => {
     }
 
     const callThis = () => {
-      statusChanger(LOADING);
-      resetFilter();
       queryChanger(val);
+      resetFilter();
+      statusChanger(LOADING);
     };
 
     clearTimeout(timeOut);
