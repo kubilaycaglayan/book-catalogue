@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { getBook } from '../API';
 import Loading from '../components/Loading';
 import { recordBook } from '../actions';
-import LinkQuery from '../components/partials/linkQuery';
 
 const mapStateToProps = state => ({
   book: state.book,
@@ -88,7 +87,6 @@ const Book = props => {
             </div>
           )
       }
-      <LinkQuery />
     </>
   );
 };

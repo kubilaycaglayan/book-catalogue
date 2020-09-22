@@ -7,6 +7,8 @@ $ligh-blue: #88a7e2
 $white: #dbf2ff
 $transparent: #ffffff00
 
+$bp-md: 767px
+
 =text-style-1
   font-family: 'Lato', sans-serif
 
@@ -44,6 +46,10 @@ body
   flex-direction: column
   margin: 0 auto
   min-width: 360px
+
+  #root
+    height: 100vh
+    width: 100%
 
   .welcome-page
     +flex-it(space-around, center)
@@ -107,6 +113,22 @@ body
   +flex-it(space-around, center)
   flex-direction: column
   padding-top: 4%
+
+  @media ( min-width: $bp-md )
+    .container-fluid
+      max-width: 1000px
+      width: 90%
+
+    .row
+      justify-content: space-around
+      width: 100%
+
+      .results
+        padding: 10px !important
+
+      h2,
+      .result-card
+        border-radius: 20px !important
 
   h2
     +text-style-1

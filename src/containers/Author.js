@@ -6,7 +6,6 @@ import { getAuthor } from '../API';
 import Loading from '../components/Loading';
 import { recordAuthor, changeStatus } from '../actions';
 import { LOADING, RESULTS_READY } from '../constants';
-import LinkQuery from '../components/partials/linkQuery';
 
 const mapStateToProps = state => ({
   author: state.author,
@@ -91,7 +90,6 @@ const Author = props => {
                   </div>
                 ))}
               </div>
-              <LinkQuery />
             </div>
           )
       }

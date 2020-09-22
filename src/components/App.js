@@ -6,6 +6,7 @@ import Welcome from './Welcome';
 import QueryPage from './QueryPage';
 import Book from '../containers/Book';
 import Author from '../containers/Author';
+import LinkQuery from './partials/linkQuery';
 
 const App = () => (
   <Router>
@@ -15,6 +16,7 @@ const App = () => (
     <Route exact path="/results" component={Results} />
     <Route exact path="/book/:bookId" component={Book} />
     <Route exact path="/author/:authorId" component={Author} />
+    <Route exact path="/(results|author|book|error)" component={LinkQuery} />
   </Router>
 );
 

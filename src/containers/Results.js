@@ -7,7 +7,6 @@ import { changeStatus, recordResults, changeFilter } from '../actions';
 import { RESULTS_READY } from '../constants';
 import Loading from '../components/Loading';
 import Filter from '../components/Filter';
-import LinkQuery from '../components/partials/linkQuery';
 
 const mapStateToProps = state => ({
   status: state.status,
@@ -87,7 +86,7 @@ const Results = props => {
               <Filter authors={authors} handleFilterChange={handleFilterChange} filter={filter} />
               <div className="container-fluid">
                 <div className="row">
-                  <div className="results col-12-md col-lg-6">
+                  <div className="results col-md-6 col-12 ">
                     <h2>
                       <div className="px-5 py-3 badge badge-light">
                         Books
@@ -105,7 +104,7 @@ const Results = props => {
                         </div>
                       ))}
                   </div>
-                  <div className="results col-12-md col-lg-6">
+                  <div className="results col-md-6 col-12 ">
                     <h2>
                       <div className="px-5 py-3 badge badge-light">
                         Authors
@@ -125,7 +124,6 @@ const Results = props => {
                   </div>
                 </div>
               </div>
-              <LinkQuery />
             </>
           )
       }
