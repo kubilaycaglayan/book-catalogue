@@ -1,6 +1,6 @@
 import { BASE_URL } from '../constants';
 
-const autoComplete = (queryWord = 'Dostoyevski') => {
+const autoComplete = (queryWord = 'Dostoevsky') => {
   const endpoint = `${BASE_URL}book/auto_complete?format=json&q=${queryWord}`;
 
   return fetch(endpoint, {

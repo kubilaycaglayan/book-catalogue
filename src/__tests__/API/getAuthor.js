@@ -1,9 +1,9 @@
 import { getAuthor } from '../../API';
 
 describe(
-  'queries for book information with a unique id',
+  'queries for author information with a unique id',
   () => {
-    test('returns an array of objects with user and score properties', async () => {
+    test('returns an object with the properties name and books', async () => {
       await getAuthor()
         .then(
           response => {

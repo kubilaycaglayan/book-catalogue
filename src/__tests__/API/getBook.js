@@ -3,7 +3,7 @@ import { getBook } from '../../API';
 describe(
   'queries for book information with a unique id',
   () => {
-    test('returns an array of objects with user and score properties', async () => {
+    test('returns an object with the properties id, title', async () => {
       await getBook()
         .then(
           response => {
