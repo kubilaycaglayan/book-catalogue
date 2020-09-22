@@ -48,7 +48,6 @@ body
   min-width: 360px
 
   #root
-    height: 100vh
     width: 100%
 
   .welcome-page
@@ -97,7 +96,8 @@ body
       color: $dark-blue
       font-size: 20px
       font-weight: bold
-      height: 35px
+      height: 55px
+      min-height: 35px
       outline: none
       text-align: center
 
@@ -112,6 +112,7 @@ body
 .results-page
   +flex-it(space-around, center)
   flex-direction: column
+  min-height: 100vh
   padding-top: 4%
 
   @media ( min-width: $bp-md )
@@ -152,6 +153,7 @@ body
       border-radius: 10px
       color: $dark-blue
       font-weight: bolder
+      padding: 10px
       text-align: center
 
       &:hover
