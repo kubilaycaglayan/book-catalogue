@@ -1,13 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const LinkQuery = () => (
-  <div className="query-page-link">
-    <i className="fas fa-angle-double-left" />
-    <Link to="/query">
-      Search Page
-    </Link>
-  </div>
-);
+const mapStateToProps = state => ({
+  query: state.query,
+});
 
-export default LinkQuery;
+const LinkQuery = props => {
+  const { query } = props;
+
+  return (
+    <div className="query-page-link">
+      <Link className="d-flex justify-content-start align-items-center" to="/query">
+        New Search
+        <i className="pb-1 mx-2 fas fa-search" />
+      </Link>
+      <Route exact path="/(book/.*|author/.*)">
+        <Link className="d-flex justify-content-start align-items-center ml-3" to={`/results?q=${query}`}>
+          <i className="pb-1 mx-2 fas fa-angle-double-left" />
+          Go Back To Results
+        </Link>
+      </Route>
+    </div>
+  );
+};
+
+LinkQuery.propTypes = {
+  query: PropTypes.string.isRequired,
+};
+
+export default connect(
+  mapStateToProps,
+  null,
+)(LinkQuery);

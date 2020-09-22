@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { autoComplete } from '../API';
-import { changeStatus, recordResults, changeFilter } from '../actions';
+import {
+  changeStatus, recordResults, changeFilter, changeQuery,
+} from '../actions';
 import { RESULTS_READY } from '../constants';
 import Loading from '../components/Loading';
 import Filter from '../components/Filter';
@@ -14,12 +16,14 @@ const mapStateToProps = state => ({
   books: state.results.books,
   authors: state.results.authors,
   filter: state.filter,
+  queryInState: state.query,
 });
 
 const mapDispatchToProps = dispatch => ({
   statusChange: status => dispatch(changeStatus(status)),
   resultRecorder: results => dispatch(recordResults(results)),
   handleFilterChange: filter => dispatch(changeFilter(filter)),
+  queryChanger: query => dispatch(changeQuery(query)),
 });
 
 const Results = props => {
@@ -32,6 +36,7 @@ const Results = props => {
     authors,
     handleFilterChange,
     filter,
+    queryChanger,
   } = props;
   const query = location.search.slice(3);
 
@@ -66,10 +71,11 @@ const Results = props => {
             authors: newAuthors(response),
             books: newBooks(response),
           });
+          queryChanger(query);
           statusChange(RESULTS_READY);
         },
       );
-  }, [query]);
+  }, [query, status]);
 
   return (
     <div className="results-page">
@@ -142,6 +148,7 @@ Results.propTypes = {
   handleFilterChange: PropTypes.func.isRequired,
   books: PropTypes.arrayOf(PropTypes.object).isRequired,
   authors: PropTypes.arrayOf(PropTypes.object).isRequired,
+  queryChanger: PropTypes.func.isRequired,
 };
 
 export default connect(
