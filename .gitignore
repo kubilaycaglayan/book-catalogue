@@ -27,3 +27,5 @@ notes.md
 
 src/API/indexDev.js
 src/API/fakeObjects.js
+src/__tests__/example.js
+.eslintignore
