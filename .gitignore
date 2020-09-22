@@ -24,3 +24,6 @@ yarn-error.log*
 
 notes.md
 .env
+
+src/API/indexDev.js
+src/API/fakeObjects.js
