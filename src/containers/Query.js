@@ -67,7 +67,7 @@ const Query = props => {
 
   return (
     <div className="query">
-      <input onChange={handleInput} spellCheck="false" />
+      <input data-testid="query-input" onChange={handleInput} spellCheck="false" />
       {RedirectIf()}
     </div>
   );
