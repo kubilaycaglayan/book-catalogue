@@ -49,7 +49,7 @@ const Query = props => {
     clearTimeout(timeOut);
     timeOut = setTimeout(() => {
       callThis();
-    }, 700);
+    }, 1200);
   };
 
   // eslint-disable-next-line consistent-return
