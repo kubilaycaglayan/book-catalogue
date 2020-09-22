@@ -5,13 +5,9 @@ const Filter = props => {
   const { authors, handleFilterChange } = props;
   const dropDown = [{ name: 'All Authors', id: 0 }, ...authors];
 
-  const changeFilter = event => {
-    handleFilterChange(event.target.value);
-  };
-
   return (
     <div className="select-box">
-      <select onChange={e => { changeFilter(e); }}>
+      <select onChange={e => { handleFilterChange(e.target.value); }}>
         {
           dropDown.map(author => (
             <option key={author.id} value={author.id}>{author.name}</option>
