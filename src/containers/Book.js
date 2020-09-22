@@ -24,7 +24,7 @@ const Book = props => {
     publisher,
   } = book;
 
-  const similarBooks = book.similar_books;
+  const similarBooks = book.similar_books || [{ book: [] }];
 
   useEffect(() => {
     if (id.toString() === bookId.toString()) return;
