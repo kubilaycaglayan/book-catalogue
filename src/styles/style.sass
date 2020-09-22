@@ -24,6 +24,7 @@ html
     font-family: 'Duru Sans', sans-serif
     font-size: 20px
     margin: 0
+    outline: 0
     padding: 0
 
   a
@@ -178,3 +179,24 @@ body
   i,
   a
     background-color: $transparent
+
+.book-page
+  +flex-it(space-around, center)
+  flex-direction: column
+  padding-bottom: 5%
+  padding-top: 5%
+
+  h1
+    +text-style-1
+    font-weight: bold
+    padding: 50px
+    text-align: center
+
+  h2
+    +text-style-1
+    font-weight: bold
+    padding: 50px
+    text-align: left
+
+  li
+    padding-bottom: 15px

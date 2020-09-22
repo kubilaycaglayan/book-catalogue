@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getBook } from '../API';
 import Loading from '../components/Loading';
 import { recordBook } from '../actions';
+import LinkQuery from '../components/partials/linkQuery';
 
 const mapStateToProps = state => ({
   book: state.book,
@@ -35,50 +37,59 @@ const Book = props => {
       );
   }, [bookId]);
 
+  console.log(book);
+
   return (
-    <div key={id}>
+    <>
       {
         id.toString() !== bookId.toString()
           ? <Loading />
           : (
-            <div>
+            <div className="book-page">
               <img src={book.image_url[0]} alt="book cover" />
-              <h4>
-                Title
-              </h4>
-              <div>
+              <h1>
                 {title}
-              </div>
-              <h4>
+              </h1>
+              <h2>
                 Authors
-              </h4>
-              <div>
-                {authors[0].author.map(author => (
-                  <div key={author.id[0]}>
-                    {author.name[0]}
-                  </div>
-                ))}
+              </h2>
+              <div className="px-5">
+                <ul>
+                  {authors[0].author.map(author => (
+                    <li key={author.id[0]}>
+                      {author.name[0]}
+                      <Link to={`/author/${author.id}`} className="more-link">More</Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h4>
+              <h2>
                 Publisher
-              </h4>
+              </h2>
               <div>
                 {publisher}
               </div>
-              <h4>
+              <h2>
                 Similar Books
-              </h4>
-              <div>
-                {similarBooks[0].book.slice(0, 3).map(bookTwo => (
-                  <div key={bookTwo.id}>
-                    {bookTwo.title}
-                  </div>
-                ))}
+              </h2>
+              <div className="px-5">
+                <ul>
+                  {similarBooks[0].book.slice(0, 3).map(bookTwo => (
+                    <li key={bookTwo.id}>
+                      {bookTwo.title}
+                      <a className="d-block" target="_blank" rel="noreferrer" href={bookTwo.link[0]}>
+                        <i className="fas fa-sign-out-alt pr-1" />
+                        See More on Goodreads...
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           )
       }
-    </div>
+      <LinkQuery />
+    </>
   );
 };
 
