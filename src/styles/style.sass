@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Duru+Sans&family=Lato:ital,wght@0,300;0,400;0,900;1,700&display=swap')
 
 $dark-blue: #244588
+$dark-blue-transparent: #24458856
 $blue: #4369b2
 $ligh-blue: #88a7e2
 $white: #dbf2ff
@@ -25,6 +26,10 @@ html
     margin: 0
     padding: 0
 
+  a
+    &:hover
+      text-decoration: none
+
 .more-link
   +text-style-1
   display: block
@@ -32,7 +37,6 @@ html
 
   &:hover
     color: $dark-blue
-    text-decoration: none
 
 body
   +flex-it(space-around, center)
@@ -151,3 +155,26 @@ body
 
       .more-link
         text-align: right
+
+.query-page-link
+  +flex-it(flex-start, center)
+  background-color: $dark-blue-transparent
+  bottom: 0
+  height: 8vh
+  left: 0
+  padding-left: 5%
+  position: sticky
+  right: 0
+  width: 100%
+
+  a
+    +text-style-1
+    font-weight: bolder
+    margin-left: 5%
+
+    &:hover
+      color: $white
+
+  i,
+  a
+    background-color: $transparent

@@ -7,6 +7,7 @@ import { changeStatus, recordResults, changeFilter } from '../actions';
 import { RESULTS_READY } from '../constants';
 import Loading from '../components/Loading';
 import Filter from '../components/Filter';
+import LinkQuery from '../components/partials/linkQuery';
 
 const mapStateToProps = state => ({
   status: state.status,
@@ -124,6 +125,7 @@ const Results = props => {
                   </div>
                 </div>
               </div>
+              <LinkQuery />
             </>
           )
       }
