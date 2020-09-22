@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -61,7 +62,6 @@ const Results = props => {
     autoComplete(query)
       .then(
         response => {
-          console.log(response);
           resultRecorder({
             authors: newAuthors(response),
             books: newBooks(response),
@@ -96,7 +96,7 @@ const Results = props => {
                       .filter(book => (book.authorId.toString() === filter || filter === '0'))
                       .map(book => (
                         <div className="result-card media" key={book.id}>
-                          <img src={book.imageUrl} />
+                          <img src={book.imageUrl} alt="book cover" />
                           <div className="media-body ml-3">
                             {book.title}
                             <Link to={`/book/${book.id}`} className="more-link mt-3">More</Link>

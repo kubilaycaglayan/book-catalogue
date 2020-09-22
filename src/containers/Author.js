@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -18,7 +19,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const Author = props => {
-  const { author, match, authorRecorder, statusChanger, status } = props;
+  const {
+    author, match, authorRecorder, statusChanger,
+  } = props;
   const { authorId } = match.params;
   const {
     link,
@@ -42,8 +45,6 @@ const Author = props => {
         },
       );
   }, [authorId]);
-
-  console.log(author);
 
   return (
     <>
@@ -84,7 +85,7 @@ const Author = props => {
                 <h2>Books</h2>
                 {books[0].book.slice(0, 10).map(book => (
                   <div className="result-card media" key={book.id[0]._}>
-                    <img src={book.image_url} />
+                    <img src={book.image_url} alt="book cover" />
                     <div className="media-body ml-3">
                       {book.title}
                       <Link to={`/book/${book.id[0]._}`} className="more-link mt-3">More</Link>
@@ -101,6 +102,8 @@ const Author = props => {
 
 Author.propTypes = {
   author: PropTypes.shape({
+    link: PropTypes.arrayOf(PropTypes.string),
+    image_url: PropTypes.arrayOf(PropTypes.string),
     id: PropTypes.number,
     name: PropTypes.arrayOf(PropTypes.string),
     about: PropTypes.arrayOf(PropTypes.string),
@@ -114,6 +117,7 @@ Author.propTypes = {
     }),
   }).isRequired,
   authorRecorder: PropTypes.func.isRequired,
+  statusChanger: PropTypes.func.isRequired,
 };
 
 export default connect(

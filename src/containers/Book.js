@@ -36,8 +36,6 @@ const Book = props => {
       );
   }, [bookId]);
 
-  console.log(book);
-
   return (
     <>
       {
