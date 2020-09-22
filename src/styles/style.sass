@@ -24,6 +24,14 @@ html
     margin: 0
     padding: 0
 
+.more-link
+  +text-style-1
+  display: block
+  font-weight: bolder
+
+  &:hover
+    color: $dark-blue
+    text-decoration: none
 
 body
   +flex-it(space-around, center)
@@ -93,14 +101,34 @@ body
   flex-direction: column
   padding-top: 4%
 
+  h2
+    +text-style-1
+    font-weight: bolder
+    margin-bottom: 5%
+    padding: 2%
+    text-align: center
+
   p
     padding: 4%
 
   select
+    +text-style-1
     background-color: $white
-    color: $dark-blue
-    @include text-style-1
-    font-weight: bolder
     border: 0
     border-radius: 10px
+    color: $dark-blue
+    font-weight: bolder
     text-align: center
+
+  .container-fluid
+    padding-top: 3%
+
+    .books
+      padding-top: 3%
+
+      .book-card
+        margin-bottom: 8%
+
+    .authors
+      padding-top: 3%
+

@@ -84,28 +84,34 @@ const Results = props => {
                 "
               </p>
               <Filter authors={authors} handleFilterChange={handleFilterChange} filter={filter} />
-              <h2>Books</h2>
-              <div className="books">
-                {books
-                  .filter(book => (book.authorId.toString() === filter || filter === '0'))
-                  .map(book => (
-                    <div key={book.id}>
-                      <img src={book.imageUrl} />
-                      {book.title}
-                      <Link to={`/book/${book.id}`}>More</Link>
-                    </div>
-                  ))}
-              </div>
-              <h2>Authors</h2>
-              <div className="authors">
-                {authors
-                  .filter(author => (author.id.toString() === filter || filter === '0'))
-                  .map(author => (
-                    <div key={author.id}>
-                      {author.name}
-                      <Link to={`/author/${author.id}`}>More</Link>
-                    </div>
-                  ))}
+              <div className="container-fluid">
+                <div className="row">
+                  <div className="books col-12-md col-lg-6">
+                    <h2>Books</h2>
+                    {books
+                      .filter(book => (book.authorId.toString() === filter || filter === '0'))
+                      .map(book => (
+                        <div className="book-card media" key={book.id}>
+                          <img src={book.imageUrl} />
+                          <div className="media-body ml-3">
+                            {book.title}
+                            <Link to={`/book/${book.id}`} className="more-link mt-3">More</Link>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                  <div className="authors col-12-md col-lg-6">
+                  <h2>Authors</h2>
+                    {authors
+                      .filter(author => (author.id.toString() === filter || filter === '0'))
+                      .map(author => (
+                        <div key={author.id}>
+                          {author.name}
+                          <Link to={`/author/${author.id}`}>More</Link>
+                        </div>
+                      ))}
+                  </div>
+                </div>
               </div>
             </>
           )
