@@ -45,7 +45,7 @@ const Book = props => {
         id.toString() !== bookId.toString()
           ? <Loading />
           : (
-            <div className="book-page">
+            <div className="single-page">
               <img src={book.image_url[0]} alt="book cover" />
               <h1>
                 {title}

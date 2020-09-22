@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getAuthor } from '../API';
 import Loading from '../components/Loading';
 import { recordAuthor, changeStatus } from '../actions';
 import { LOADING, RESULTS_READY } from '../constants';
+import LinkQuery from '../components/partials/linkQuery';
 
 const mapStateToProps = state => ({
   author: state.author,
@@ -20,9 +22,11 @@ const Author = props => {
   const { author, match, authorRecorder, statusChanger, status } = props;
   const { authorId } = match.params;
   const {
+    link,
     name,
     about,
     books,
+    image_url,
   } = author;
 
   const bornAt = author.born_at;
@@ -40,51 +44,58 @@ const Author = props => {
       );
   }, [authorId]);
 
+  console.log(author);
+
   return (
-    <div>
+    <>
       {
         author.id.toString() !== authorId.toString()
           ? <Loading />
           : (
-            <div>
+            <div className="single-page">
+              <img className="rounded" src={image_url} alt="author" />
               <div>
-                <h4>Name</h4>
-                {name}
+                <h1>
+                  {name}
+                </h1>
+                <a className="d-block" target="_blank" rel="noreferrer" href={link[0]}>
+                  <i className="fas fa-sign-out-alt pr-1" />
+                  See More on Goodreads...
+                </a>
               </div>
               <div>
-                <h4>About</h4>
-                {about[0].slice(0, 200).concat('...')}
+                <h2>About</h2>
+                <p className="px-3 text-center">
+                  {about[0].slice(0, 200).concat('...')}
+                </p>
               </div>
               <div>
-                <h4>Birth</h4>
-                {bornAt}
-                <h4>Death</h4>
-                {diedAt}
+                <h2>Birth</h2>
+                <p className="px-3 text-center">
+                  {bornAt}
+                </p>
+                <h2>Death</h2>
+                <p className="px-3 text-center">
+                  {diedAt}
+                </p>
               </div>
               <div>
-                <h4>Books</h4>
-                {books[0].book.map(book => (
-                  <div key={book.id[0]._}>
-                    <img src={book.image_url} alt="book cover" />
-                    <h5>
-                      Title
-                    </h5>
-                    <div>
+                <h2>Books</h2>
+                {books[0].book.slice(0, 10).map(book => (
+                  <div className="result-card media" key={book.id[0]._}>
+                    <img src={book.image_url} />
+                    <div className="media-body ml-3">
                       {book.title}
-                    </div>
-                    <h5>
-                      Description
-                    </h5>
-                    <div>
-                      {book.description[0].slice(0, 100).concat('...')}
+                      <Link to={`/book/${book.id[0]._}`} className="more-link mt-3">More</Link>
                     </div>
                   </div>
                 ))}
               </div>
+              <LinkQuery />
             </div>
           )
       }
-    </div>
+    </>
   );
 };
 

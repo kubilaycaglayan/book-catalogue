@@ -180,10 +180,10 @@ body
   a
     background-color: $transparent
 
-.book-page
+.single-page
   +flex-it(space-around, center)
   flex-direction: column
-  padding-bottom: 5%
+  padding-bottom: 0%
   padding-top: 5%
 
   h1
@@ -196,7 +196,23 @@ body
     +text-style-1
     font-weight: bold
     padding: 50px
-    text-align: left
+    text-align: center
 
   li
     padding-bottom: 15px
+
+  .result-card
+    background: linear-gradient(0deg, $blue 0%, $white 84%, $white 100%)
+    padding: 5%
+
+  i
+    background-color: $transparent
+    font-size: 2rem
+
+  .media-body,
+  .more-link
+    background-color: $transparent
+    color: $dark-blue
+
+  .more-link
+    text-align: right
