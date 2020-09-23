@@ -60,7 +60,7 @@ To get a local copy up and running follow these simple example steps.
 
 - In the directory where you want to install the project, please open the terminal and run:
 - `git clone https://github.com/kubilaycaglayan/book-catalogue.git`
-- And then: `cd book-catalogue`
+- And then: `cd book_catalogue`
 
 ### Install
 
