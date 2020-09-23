@@ -1,5 +1,4 @@
-export const GOODREADS_API_KEY = process.env.REACT_APP_GOODREADS_API_KEY
-  || process.env.GOODREADS_API_KEY;
+export const GOODREADS_API_KEY = 'Ys0aMCpm754ABIoafSezZw';
 export const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://www.goodreads.com/';
 
 export const WELCOME = 'WELCOME';
