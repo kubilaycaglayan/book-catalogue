@@ -62,7 +62,7 @@ const Author = props => {
               <div>
                 <h2>About</h2>
                 <p className="px-3 text-center">
-                  {about[0].slice(0, 200).concat('...')}
+                  {about[0].replace(/href=".*"/, '').replace(/(<.{1,55}>|<|>)/g, '').slice(0, 200).concat('...')}
                 </p>
                 <a className="mt-5 d-flex justify-content-end align-items-center pr-4" target="_blank" rel="noreferrer" href={link[0]}>
                   <i className="fas fa-sign-out-alt pr-1" />
