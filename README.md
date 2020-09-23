@@ -20,6 +20,19 @@
 
 
 
+## Screenshots
+
+<p align="center">
+  <img
+    height=300
+    src="./src/images/query.png"
+  />
+  <img
+    height=300
+    src="./src/images/results.png"
+  />
+</p>
+
 ## Built With
 
 - React
@@ -63,7 +76,7 @@ To get a local copy up and running follow these simple example steps.
 
 - After installing the project, you can run tests with this simple command:
 - `npm test`
-- And please push button `a` to rerun all the tests that were committed before.
+- And please push button `a` to re-run all the tests that were committed before.
 
 ## Authors
 
