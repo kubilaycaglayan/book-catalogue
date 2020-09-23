@@ -48,6 +48,7 @@ const Query = props => {
 
     clearTimeout(timeOut);
     timeOut = setTimeout(() => {
+      if (val === '') return;
       callThis();
     }, 1200);
   };

@@ -14,7 +14,6 @@ const Filter = props => {
           ))
         }
       </select>
-      <i className="fas fa-filter" />
     </div>
   );
 };

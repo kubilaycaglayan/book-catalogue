@@ -14,11 +14,11 @@ const LinkQuery = props => {
     <div className="query-page-link">
       <Link className="d-flex justify-content-start align-items-center" to="/query">
         New Search
-        <i className="pb-1 mx-2 fas fa-search" />
+        <i className="mx-2 fas fa-search" />
       </Link>
       <Route exact path="/(book/.*|author/.*)">
         <Link className="d-flex justify-content-start align-items-center ml-3" to={`/results?q=${query}`}>
-          <i className="pb-1 mx-2 fas fa-angle-double-left" />
+          <i className="mx-2 fas fa-angle-double-left" />
           Go Back To Results
         </Link>
       </Route>
