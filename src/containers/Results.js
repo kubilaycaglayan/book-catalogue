@@ -63,6 +63,7 @@ const Results = props => {
   }));
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (status === RESULTS_READY || query === '') return;
     autoComplete(query)
       .then(
