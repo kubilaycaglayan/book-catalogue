@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Duru+Sans&family=Lato:ital,wght@0,300;0,400;0,900;1,700&display=swap')
+
+@import '_blue_fit.sass'
+
+$wallpaper: url('../images/bg-1.jpg')
+
+$bp-md: 767px
+
+=text-style-1
+  font-family: 'Lato', sans-serif
+
+=text-background-1
+  background-color: $text-background
+  border-radius: 10px
+
+@mixin flex-it($justify-content, $align-items)
+  align-items: $align-items
+  display: flex
+  justify-content: $justify-content
+
+
+html
+  *
+    box-sizing: border-box
+    color: $blue
+    font-family: 'Duru Sans', sans-serif
+    font-size: 20px
+    margin: 0
+    outline: 0
+    padding: 0
+
+  a
+    &:hover
+      text-decoration: none
+
+.more-link
+  +text-style-1
+  display: block
+  font-weight: bolder
+
+  &:hover
+    color: $dark-blue
+
+body
+  +flex-it(space-around, center)
+  background-attachment: fixed
+  background-image: $wallpaper
+  background-position-y: 100%
+  background-size: cover
+  flex-direction: column
+  margin: 0 auto
+  min-width: 360px
+
+  #root
+    width: 100%
+
+  .welcome-page
+    +flex-it(space-around, center)
+    flex-direction: column
+    padding-top: 50px
+    height: 100vh
+
+    h1
+      +text-style-1
+      +flex-it(space-around, center)
+      +text-background-1
+      flex-direction: column
+      font-size: 35px
+      font-weight: bolder
+      padding: 0 10px
+      padding-bottom: 15px
+      padding-top: 90px
+      text-align: center
+      text-transform: capitalize
+
+    .main-page-link
+      +flex-it(space-around, center)
+      +text-background-1
+      flex-direction: column
+      padding: 0 20px
+      padding-bottom: 15px
+      padding-top: 105px
+
+      &:hover
+        text-decoration: none
+        transform: scale(1.1)
+        transition: transform 1s
+
+    i
+      bottom: 50px
+      position: relative
+      transform: scale(4)
+
+.query-page
+  +flex-it(space-around, center)
+  +text-background-1
+  border-radius: 0
+  flex-direction: column
+  height: 100vh
+  min-height: 640px
+  padding-top: 5%
+
+  i
+    transform: scale(3)
+
+  .query
+    input
+      +text-style-1
+      background-color: $dark-blue
+      border: 0
+      border-radius: 15px
+      color: $white
+      font-size: 20px
+      font-weight: bold
+      height: 55px
+      min-height: 35px
+      outline: none
+      text-align: center
+
+  h1
+    padding: 10px
+    text-align: center
+
+  .symbols
+    +flex-it(space-around, center)
+    width: 300px
+
+.results-page
+  +flex-it(space-around, center)
+  flex-direction: column
+  min-height: 100vh
+  padding-bottom: 8vh
+  padding-top: 4%
+
+  @media ( min-width: $bp-md )
+    .container-fluid
+      max-width: 1000px
+      width: 90%
+
+    .row
+      justify-content: space-around
+      width: 100%
+
+      .results
+        padding: 10px !important
+
+      h2,
+      .result-card
+        border-radius: 20px
+
+  h2
+    +text-style-1
+    background-color: $dark-blue
+    font-size: 2rem
+    font-weight: bolder
+    padding: 5%
+    text-align: center
+    position: sticky
+    top: 70px
+    z-index: 2
+
+  p
+    +flex-it(center, center)
+    +text-background-1
+    border-radius: 0
+    height: 70px
+    margin: 20px auto
+    padding: 0 10px
+    position: sticky
+    text-align: center
+    top: 0
+    width: 100%
+    z-index: 3
+
+    @media ( max-width: 500px )
+      font-size: 3vw
+
+
+  .select-box
+    +flex-it(center, center)
+    width: 100%
+
+    select
+      +text-style-1
+      background-color: $white
+      border: 0
+      border-radius: 10px
+      color: $dark-blue
+      font-weight: bolder
+      max-width: 450px
+      padding: 10px
+      text-align: center
+
+      @media ( max-width: 500px )
+        width: 80%
+
+      &:hover
+        cursor: pointer
+
+  .container-fluid
+    padding-top: 3%
+
+    *
+      color: $dark-blue
+
+    .results
+      padding: 0
+      padding-top: 3%
+
+      .result-card
+        background: linear-gradient(0deg, $blue 0%, $white 84%, $white 100%)
+        padding: 5%
+
+      i
+        background-color: $transparent
+        font-size: 2rem
+
+      .media-body,
+      .more-link
+        background-color: $transparent
+
+      .more-link
+        text-align: right
+
+.query-page-link
+  +flex-it(flex-start, center)
+  background-color: $dark-blue-transparent
+  bottom: 0
+  height: 8vh
+  left: 0
+  padding-left: 5%
+  position: sticky
+  right: 0
+  width: 100%
+
+  @media ( max-width: 535px )
+    a
+      font-size: 4vw
+
+
+  a
+    +text-style-1
+    font-weight: bolder
+    margin-left: 10px
+
+  i,
+  a
+    background-color: $transparent
+    color: $white
+
+  .fa-angle-double-left,
+  .fa-search
+    bottom: 1px
+    position: relative
+
+.single-page
+  +flex-it(space-around, center)
+  +text-background-1
+  border-radius: 0
+  flex-direction: column
+  padding-bottom: 3%
+  padding-top: 5%
+
+  @media ( min-width: $bp-md )
+    margin: 0 auto
+    max-width: 1000px
+
+    .result-card
+      border-radius: 10px
+      margin-bottom: 10px
+
+  h1
+    +text-style-1
+    font-weight: bold
+    padding: 50px
+    padding-bottom: 0
+    text-align: center
+
+  h2
+    +text-style-1
+    font-weight: bold
+    padding: 50px
+    text-align: center
+
+  li
+    padding-bottom: 15px
+
+  .result-card
+    background: linear-gradient(0deg, $blue 0%, $white 84%, $white 100%)
+    padding: 5%
+
+  i
+    background-color: $transparent
+    font-size: 2rem
+
+  .media-body,
+  .more-link
+    background-color: $transparent
+    color: $dark-blue
+
+  .more-link
+    text-align: right

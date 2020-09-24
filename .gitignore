@@ -21,3 +21,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+notes.md
+.env
+
+src/API/indexDev.js
+src/API/fakeObjects.js
+src/__tests__/example.js
+.eslintignore
+src/test_a.js
