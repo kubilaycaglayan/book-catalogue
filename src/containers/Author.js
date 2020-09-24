@@ -35,6 +35,7 @@ const Author = props => {
   const diedAt = author.died_at;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (author.id.toString() === authorId.toString()) return;
     statusChanger(LOADING);
     getAuthor(authorId)

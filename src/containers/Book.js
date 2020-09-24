@@ -27,6 +27,7 @@ const Book = props => {
   const similarBooks = book.similar_books || [{ book: [] }];
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (id.toString() === bookId.toString()) return;
     getBook(bookId)
       .then(
