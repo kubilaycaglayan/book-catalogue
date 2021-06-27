@@ -63,9 +63,9 @@ const Author = props => {
               <div>
                 <h2>About</h2>
                 <p className="px-3 text-center">
-                  {about[0].replace(/href=".*"/, '').replace(/(<.{1,55}>|<|>)/g, '').slice(0, 200).concat('...')}
+                  {about.replace(/href=".*"/, '').replace(/(<.{1,55}>|<|>)/g, '').slice(0, 200).concat('...')}
                 </p>
-                <a className="mt-5 d-flex justify-content-end align-items-center pr-4" target="_blank" rel="noreferrer" href={link[0]}>
+                <a className="mt-5 d-flex justify-content-end align-items-center pr-4" target="_blank" rel="noreferrer" href={link}>
                   <i className="fas fa-sign-out-alt pr-1" />
                   <p>
                     See More on Goodreads...
@@ -84,12 +84,12 @@ const Author = props => {
               </div>
               <div>
                 <h2>Books</h2>
-                {books[0].book.slice(0, 10).map(book => (
-                  <div className="result-card media" key={book.id[0]._}>
+                {books.book.slice(0, 10).map(book => (
+                  <div className="result-card media" key={book.id}>
                     <img src={book.image_url} alt="book cover" />
                     <div className="media-body ml-3">
                       {book.title}
-                      <Link to={`/book/${book.id[0]._}`} className="more-link mt-3">More</Link>
+                      <Link to={`/book/${book.id}`} className="more-link mt-3">More</Link>
                     </div>
                   </div>
                 ))}
@@ -103,14 +103,16 @@ const Author = props => {
 
 Author.propTypes = {
   author: PropTypes.shape({
-    link: PropTypes.arrayOf(PropTypes.string),
-    image_url: PropTypes.arrayOf(PropTypes.string),
+    link: PropTypes.string,
+    image_url: PropTypes.string,
     id: PropTypes.number,
-    name: PropTypes.arrayOf(PropTypes.string),
-    about: PropTypes.arrayOf(PropTypes.string),
-    born_at: PropTypes.arrayOf(PropTypes.string),
-    died_at: PropTypes.arrayOf(PropTypes.string),
-    books: PropTypes.arrayOf(PropTypes.object),
+    name: PropTypes.string,
+    about: PropTypes.string,
+    born_at: PropTypes.string,
+    died_at: PropTypes.string,
+    books: PropTypes.shape({
+      book: PropTypes.arrayOf(PropTypes.object),
+    }),
   }).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({

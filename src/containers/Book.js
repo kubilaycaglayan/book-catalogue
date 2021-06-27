@@ -44,7 +44,7 @@ const Book = props => {
           ? <Loading />
           : (
             <div className="single-page">
-              <img src={book.image_url[0]} alt="book cover" />
+              <img src={book.image_url} alt="book cover" />
               <h1>
                 {title}
               </h1>
@@ -53,9 +53,9 @@ const Book = props => {
               </h2>
               <div className="px-5">
                 <ul>
-                  {authors[0].author.map(author => (
-                    <li key={author.id[0]}>
-                      {author.name[0]}
+                  {authors.author.map(author => (
+                    <li key={author.id}>
+                      {author.name}
                       <Link to={`/author/${author.id}`} className="more-link">More</Link>
                     </li>
                   ))}
@@ -72,10 +72,10 @@ const Book = props => {
               </h2>
               <div className="px-5">
                 <ul>
-                  {similarBooks[0].book.slice(0, 3).map(bookTwo => (
+                  {similarBooks.book.slice(0, 3).map(bookTwo => (
                     <li key={bookTwo.id}>
                       {bookTwo.title}
-                      <a className="d-block" target="_blank" rel="noreferrer" href={bookTwo.link[0]}>
+                      <a className="d-block" target="_blank" rel="noreferrer" href={bookTwo.link}>
                         <i className="fas fa-sign-out-alt pr-1" />
                         See More on Goodreads...
                       </a>
@@ -98,12 +98,14 @@ Book.propTypes = {
   }).isRequired,
   bookRecorder: PropTypes.func.isRequired,
   book: PropTypes.shape({
-    image_url: PropTypes.arrayOf(PropTypes.string),
+    image_url: PropTypes.string,
     id: PropTypes.number,
-    title: PropTypes.arrayOf(PropTypes.string),
-    authors: PropTypes.arrayOf(PropTypes.object),
-    publisher: PropTypes.arrayOf(PropTypes.string),
-    similar_books: PropTypes.arrayOf(PropTypes.object),
+    title: PropTypes.string,
+    authors: PropTypes.shape({
+      author: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+    publisher: PropTypes.string,
+    similar_books: PropTypes.shape({}),
   }).isRequired,
 };
 

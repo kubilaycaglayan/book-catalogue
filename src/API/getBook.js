@@ -1,4 +1,3 @@
-import { parseString } from 'xml2js';
 import { BASE_URL, GOODREADS_API_KEY } from '../constants';
 
 const getBook = (bookId = '2788041') => {
@@ -8,15 +7,20 @@ const getBook = (bookId = '2788041') => {
     mode: 'cors',
   })
     .then(
-      response => response.text(),
+      response => response.json(),
     )
     .then(
       response => {
-        let result;
-        parseString(response, (err, res) => {
-          [result] = res.GoodreadsResponse.book;
-        });
-        return result;
+        const correctedBook = {
+          ...response.GoodreadsResponse.book,
+          authors: {
+            author: response.GoodreadsResponse.book.authors.author.length
+              ? response.GoodreadsResponse.book.authors.author
+              : [response.GoodreadsResponse.book.authors.author],
+          },
+        };
+
+        return correctedBook;
       },
     );
 };

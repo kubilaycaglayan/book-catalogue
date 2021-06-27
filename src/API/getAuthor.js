@@ -1,4 +1,3 @@
-import { parseString } from 'xml2js';
 import { BASE_URL, GOODREADS_API_KEY } from '../constants';
 
 const getAuthor = (authorId = '18541') => {
@@ -8,15 +7,11 @@ const getAuthor = (authorId = '18541') => {
     mode: 'cors',
   })
     .then(
-      response => response.text(),
+      response => response.json(),
     )
     .then(
       response => {
-        let result;
-        parseString(response, (err, res) => {
-          [result] = res.GoodreadsResponse.author;
-        });
-        return result;
+        return response.GoodreadsResponse.author;
       },
     );
 };

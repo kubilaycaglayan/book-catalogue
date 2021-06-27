@@ -5,7 +5,7 @@ const book = (state = {}, action) => {
     case RECORD_BOOK:
       return {
         ...action.book,
-        id: parseInt(action.book.id[0], 10),
+        id: parseInt(action.book.id, 10),
       };
     default:
       return state;

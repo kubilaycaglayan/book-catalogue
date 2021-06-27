@@ -15,10 +15,10 @@ export const initialState = {
     authors: [],
   },
   book: {
-    title: [''],
+    title: '',
     id: 0,
-    authors: [{}],
-    publisher: [''],
+    authors: {},
+    publisher: '',
   },
   author: {
     id: 0,
