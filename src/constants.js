@@ -1,5 +1,5 @@
 export const GOODREADS_API_KEY = 'Ys0aMCpm754ABIoafSezZw';
-export const BASE_URL = 'https://thingproxy.freeboard.io/fetch/https://www.goodreads.com/';
+export const BASE_URL = 'https://kubilay-requester.herokuapp.com/https://www.goodreads.com/';
 
 export const WELCOME = 'WELCOME';
 export const RESULTS_READY = 'RESULTS_READY';
