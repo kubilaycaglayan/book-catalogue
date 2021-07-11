@@ -1,5 +1,6 @@
 export const GOODREADS_API_KEY = 'Ys0aMCpm754ABIoafSezZw';
-export const BASE_URL = 'https://kubilay-requester.herokuapp.com/https://www.goodreads.com/';
+export const PROXY = 'https://kubilay-requester.herokuapp.com/';
+export const BASE_URL = `${PROXY}https://www.goodreads.com/`;
 
 export const WELCOME = 'WELCOME';
 export const RESULTS_READY = 'RESULTS_READY';
